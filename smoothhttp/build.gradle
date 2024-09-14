@@ -1,0 +1,44 @@
+plugins {
+    id 'com.android.library'
+}
+apply from: "maven.gradle"
+android {
+    compileSdkVersion 30
+    buildToolsVersion "30.0.2"
+
+    defaultConfig {
+        minSdkVersion 22
+        targetSdkVersion 26
+        versionCode 1
+        versionName "1.0.1"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
+    }
+
+    buildTypes {
+        release {
+            consumerProguardFiles 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+def retrofit2Version = '2.6.0'
+
+dependencies {
+
+    implementation 'androidx.appcompat:appcompat:1.2.0'
+    implementation 'com.google.android.material:material:1.2.1'
+    implementation "com.google.code.gson:gson:2.8.6"  // gson
+//    implementation 'com.alibaba:fastjson:1.1.72.android'
+    api "io.reactivex.rxjava2:rxandroid:2.1.1" // rxJava 2
+    api "io.reactivex.rxjava2:rxjava:2.2.20"   // retrofit 2
+    api "com.squareup.retrofit2:retrofit:${retrofit2Version}"
+    api "com.squareup.retrofit2:adapter-rxjava2:${retrofit2Version}"
+    testImplementation 'junit:junit:4.+'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+}
